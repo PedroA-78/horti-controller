@@ -22,7 +22,56 @@
         </div>
     </header>
     <main>
-        
+        <div class="products_cards">
+            <div class="products_card">
+                <div class="products_name">
+                    <p>Laranja Pera</p>
+                </div>
+                <div class="products_preview">
+                    <img src="images/laranja_pera.png">
+                </div>
+                <div class="products_actions">
+                    <a href=""><span class="material-symbols-outlined">edit_square</span></a>
+                    <a href=""><span class="material-symbols-outlined">delete</span></a>
+                </div>
+            </div>
+            <div class="products_card">
+                <div class="products_name">
+                    <p>Hortelã</p>
+                </div>
+                <div class="products_preview">
+                    <img src="images/hortela.png">
+                </div>
+                <div class="products_actions">
+                    <a href=""><span class="material-symbols-outlined">edit_square</span></a>
+                    <a href=""><span class="material-symbols-outlined">delete</span></a>
+                </div>
+            </div>
+            <div class="products_card">
+                <div class="products_name">
+                    <p>Banana Naninca</p>
+                </div>
+                <div class="products_preview">
+                    <img src="images/banana_nanica.png">
+                </div>
+                <div class="products_actions">
+                    <a href=""><span class="material-symbols-outlined">edit_square</span></a>
+                    <a href=""><span class="material-symbols-outlined">delete</span></a>
+                </div>
+            </div>
+            <div class="products_card">
+                <div class="products_name">
+                    <p>Alface Crespa</p>
+                </div>
+                <div class="products_preview">
+                    <img src="images/alface_crespa.png">
+                </div>
+                <div class="products_actions">
+                    <a href=""><span class="material-symbols-outlined">edit_square</span></a>
+                    <a href=""><span class="material-symbols-outlined">delete</span></a>
+                </div>
+            </div>
+        </div>
     </main>
 </body>
 </html>

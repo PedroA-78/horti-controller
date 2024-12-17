@@ -9,7 +9,7 @@
 </head>
 <body>
     HOME
-    <p><a href="/inventory">Inventory List</a></p>
+    <p><a href="/products">Inventory List</a></p>
     <p><a href="">Inventory Count</a></p>
     <p><a href="">Add Product</a></p>
 </body>
