@@ -5,9 +5,10 @@
             LightInv
         </a>
     </div>
+
     <div class="header_pages">
-        <a href="/inventory">Inventory List</a>
+        <a href="/products">Inventory List</a>
         <a href="">Inventory Count</a>
-        <a href="">Add Product</a>
+        <a href="/products/add">Add Product</a>
     </div>
 </header>

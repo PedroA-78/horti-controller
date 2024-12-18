@@ -8,9 +8,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
 </head>
 <body>
-    HOME
-    <p><a href="/products">Inventory List</a></p>
-    <p><a href="">Inventory Count</a></p>
-    <p><a href="">Add Product</a></p>
+    <?php include_once 'includes/header.php' ?>
+
+    <main></main>
+
+    <?php include_once 'includes/footer.php' ?>
 </body>
 </html>

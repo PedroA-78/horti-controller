@@ -1,7 +1,8 @@
 <?php 
     $routes = [
         '/home' => 'views/home.php',
-        '/products' => 'views/inventory_list.php'
+        '/products' => 'views/inventory_list.php',
+        '/products/add' => 'views/inventory_add.php'
     ];
 
     $path = $_SERVER['REQUEST_URI'];
