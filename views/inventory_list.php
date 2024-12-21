@@ -9,7 +9,7 @@
 </head>
 <body>
     <?php include_once 'includes/header.php'?>
-    <main>
+    <main class="page_products">
         <div class="products_cards">
             <div class="products_card">
                 <div class="products_name">

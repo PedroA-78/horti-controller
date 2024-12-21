@@ -52,7 +52,7 @@
                     <div class="product_add_preview_custom" onclick="product_preview.click()">
                         <span class="material-symbols-outlined">cloud_upload</span>
                         <p>Click to Upload</p>
-                        <p></p>
+                        <p class="product_add_preview_name"></p>
                     </div>
                 </div>
 

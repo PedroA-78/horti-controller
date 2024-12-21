@@ -8,7 +8,7 @@
 
     <div class="header_pages">
         <a href="/products">Inventory List</a>
-        <a href="">Inventory Count</a>
+        <a href="/count">Inventory Count</a>
         <a href="/products/add">Add Product</a>
     </div>
 </header>
