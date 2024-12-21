@@ -16,7 +16,7 @@
                 <h2>Add New Product</h2>
             </div>
 
-            <form action="/products/add" method="POST">
+            <form action="/products/add" method="POST" enctype="multipart/form-data">
                 <div class="product_add_name">
                     <label for="">Product Name</label>
                     <input type="text" name="product_name" placeholder="Enter product name" required>

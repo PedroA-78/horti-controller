@@ -1,7 +1,7 @@
 <?php 
     function connectDB() {
         try {
-            $pdo = new PDO("sqlite:database/matriz.db");
+            $pdo = new PDO("sqlite:model/database/matriz.db");
             $pdo -> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             return $pdo;
         } catch (PDOException $e) {
