@@ -1,4 +1,6 @@
 <?php 
+    require_once 'includes/connect.php';
+
     function _upload($preview) {
         if (isset($preview) && $preview['error'] == UPLOAD_ERR_OK) {
             $directory = 'model/previews/';
@@ -23,10 +25,35 @@
         return;
     }
 
+    function _replace($preview, $product) {
+        if (isset($preview) && $preview['error'] == UPLOAD_ERR_OK) {
+            $directory = 'model/previews/';
+            $file_name = _preview($product);
+            $path = $directory . $file_name;
+
+            if (file_exists($path)) {
+                unlink($path);
+            }
+
+            return _upload($preview);
+        }
+
+        return null;
+    }
+
     function _rename($current_name) {
         $extension = pathinfo($current_name, PATHINFO_EXTENSION);
         $new_name = uniqid('preview_', false) . '.' . $extension;
 
         return $new_name;
+    }
+
+    function _preview($id) {
+        $pdo = connectDB();
+        $stmt = $pdo -> prepare("SELECT preview FROM products WHERE id = :id");
+        $stmt -> execute([':id' => $id]);
+        $preview = $stmt -> fetchAll(PDO::FETCH_ASSOC)[0]['preview'];
+
+        return $preview;
     }
 ?>
