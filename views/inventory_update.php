@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add Product</title>
-    <link rel="stylesheet" href="../views/styles/style.css">
+    <title>Update Product</title>
+    <link rel="stylesheet" href="../../views/styles/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
 </head>
 <body>
@@ -13,36 +13,36 @@
     <main class="page_add">
         <div class="product_add_box">
             <div class="product_add_header">
-                <h2>Add New Product</h2>
+                <h2>Update Product</h2>
             </div>
 
-            <form action="/products/add" method="POST" enctype="multipart/form-data">
+            <form action="/products" method="POST" enctype="multipart/form-data">
                 <div class="product_add_name">
                     <label for="">Product Name</label>
-                    <input type="text" name="product_name" placeholder="Enter product name" required>
+                    <input type="text" name="product_name" placeholder="Enter product name" value="<?= $result['name'] ?>" required>
                 </div>
 
                 <div class="product_add_code">
                     <label for="">Code</label>
-                    <input type="text" name="product_code" placeholder="Enter product code">
+                    <input type="text" name="product_code" placeholder="Enter product code" value="<?= $result['code'] ?>">
                 </div>
 
                 <div class="product_add_category">
                     <label for="">Category</label>
                     <select name="product_category" required>
-                        <option value="Legumes" selected>Legumes</option>
-                        <option value="Verduras">Verduras</option>
-                        <option value="Frutas">Frutas</option>
-                        <option value="Ovos">Ovos</option>
-                        <option value="Embalados">Embalados</option>
+                        <option value="Legumes" <?= $result['category'] == 'Legumes' ? 'selected' : '' ?>>Legumes</option>
+                        <option value="Verduras" <?= $result['category'] == 'Verduras' ? 'selected' : '' ?>>Verduras</option>
+                        <option value="Frutas" <?= $result['category'] == 'Frutas' ? 'selected' : '' ?>>Frutas</option>
+                        <option value="Ovos" <?= $result['category'] == 'Ovos' ? 'selected' : '' ?>>Ovos</option>
+                        <option value="Embalados" <?= $result['category'] == 'Embalados' ? 'selected' : '' ?>>Embalados</option>
                     </select>
                 </div>
 
                 <div class="product_add_unit">
                     <label for="">Unit</label>
                     <select name="product_unit" required>
-                        <option value="KG" selected>KG</option>
-                        <option value="UN">UN</option>
+                        <option value="KG" <?= $result['unit'] == 'KG' ? 'selected' : '' ?>>KG</option>
+                        <option value="UN" <?= $result['unit'] == 'UN' ? 'selected' : '' ?>>UN</option>
                     </select>
                 </div>
 
@@ -55,6 +55,9 @@
                         <p class="product_add_preview_name"></p>
                     </div>
                 </div>
+
+                <input type="hidden" name="_method" value="PUT">
+                <input type="hidden" name="_product" value="<?= $result['id'] ?>">
 
                 <div class="product_add_actions">
                     <button type="submit">Save Product</button>

@@ -38,7 +38,7 @@
             return _upload($preview);
         }
 
-        return null;
+        return _preview($product);
     }
 
     function _rename($current_name) {
