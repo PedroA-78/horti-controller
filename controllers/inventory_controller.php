@@ -33,7 +33,6 @@
     function _put($table, $data) {
         $pdo = connectDB();
 
-        // $fields = implode(", ", array_keys($data));
         $placeholders = implode(", ", array_map(fn($field) => "$field = :$field", array_keys($data)));
 
         $sql = "UPDATE $table SET $placeholders WHERE id = :id";
@@ -41,8 +40,12 @@
         $stmt -> execute($data);
     }
 
-    function delete_method() {
+    function _delete($table, $product) {
+        $pdo = connectDB();
 
+        $sql = "DELETE FROM $table WHERE id = :id";
+        $stmt = $pdo -> prepare($sql);
+        $stmt -> execute([':id' => $product]);
     }
 
 ?>

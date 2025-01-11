@@ -23,10 +23,13 @@
             break;
         case $update === 1:
             $product_id = $update_item[1];
-            require 'controllers/inventory_update_controller.php';
+            $route = 'UPDATE';
+            require 'controllers/inventory_list_controller.php';
             break;
         case $delete === 1:
-            echo "deleted";
+            $product_id = $delete_item[1];
+            $route = 'DELETE';
+            require 'controllers/inventory_list_controller.php';
             break;
         default:
             echo "Página não encontrada!";

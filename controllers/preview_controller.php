@@ -41,6 +41,18 @@
         return _preview($product);
     }
 
+    function _remove($product) {
+        if (isset($product)) {
+            $directory = 'model/previews/';
+            $file_name = _preview($product);
+            $path = $directory . $file_name;
+            
+            if (file_exists($path)) {
+                unlink($path);
+            }
+        }
+    }
+
     function _rename($current_name) {
         $extension = pathinfo($current_name, PATHINFO_EXTENSION);
         $new_name = uniqid('preview_', false) . '.' . $extension;
