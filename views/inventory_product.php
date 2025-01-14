@@ -6,36 +6,41 @@
     <title>Product</title>
     <link rel="stylesheet" href="../views/styles/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+    <script src="/views/script/script.js"></script>
 </head>
 <body>
     <?php include_once 'includes/header.php' ?>
 
     <main class="page_count_item">
         <div class="product_box">
-            <form action="">
+            <form action="/count" method="POST">
                 <div class="product_name">
-                    <h2>Hortelã</h2>
+                    <h2><?= $result['name'] ?></h2>
                 </div>
 
                 <div class="product_preview">
-                    <img src="../images/hortela.png">
+                    <img src="<?= "../" . $directory . $result['preview'] ?>">
                 </div>
 
                 <div class="product_amount">
                     <p>Estoque atual</p>
-                    <p>57<span>UN</span></p>
+                    <p class="product_amount_value"><?= $result['amount'] ?><span><?= $result['unit'] ?></span></p>
                 </div>
 
                 <div class="product_input">
-                    <input type="number" placeholder="Enter weight">
+                    <input type="number" placeholder="Enter weight" >
                     <div class="product_input_actions">
                         <p class="_remove"><span class="material-symbols-outlined">remove</span></p>
                         <p class="_add"><span class="material-symbols-outlined">add</span></p>
                     </div>
                 </div>
 
+                <input type="hidden" name="_product_id" value="<?= $result['id'] ?>">
+                <input type="hidden" class="_product_amount" name="_product_amount" value="<?= $result['amount'] ?>">
+                <input type="hidden" class="_product_unit" name="_product_unit" value="<?= $result['unit'] ?>">
+
                 <div class="product_save">
-                    <button type="button">Save Product</button>
+                    <button type="submit">Save Product</button>
                 </div>
             </form>
         </div>

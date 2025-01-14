@@ -6,78 +6,26 @@
     <title>Count</title>
     <link rel="stylesheet" href="../views/styles/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+    <script src="/views/script/script.js"></script>
 </head>
 <body>
     <?php include_once 'includes/header.php' ?>
 
     <main class="page_count">
         <div class="products_cards">
-            <div class="products_card">
+            <?php foreach ($results as $product): ?>
+            <div class="products_card" id="<?= $product['id'] ?>">
                 <div class="products_name">
-                    <p>Laranja Pera</p>
+                    <p><?= $product['name'] ?></p>
                 </div>
                 <div class="products_preview">
-                    <img src="images/laranja_pera.png">
+                    <img src="<?= $directory . $product['preview'] ?>">
                 </div>
                 <div class="products_infos">
-                    <p>10.7 KG</p>
+                    <p><?= $product['amount'] ?> <?=  $product['unit'] ?></p>
                 </div>
             </div>
-            <div class="products_card">
-                <div class="products_name">
-                    <p>Batata</p>
-                </div>
-                <div class="products_preview">
-                    <img src="images/batata.png">
-                </div>
-                <div class="products_infos">
-                    <p>107.1 KG</p>
-                </div>
-            </div>
-            <div class="products_card">
-                <div class="products_name">
-                    <p>Alface Crespa</p>
-                </div>
-                <div class="products_preview">
-                    <img src="images/alface_crespa.png">
-                </div>
-                <div class="products_infos">
-                    <p>92 UN</p>
-                </div>
-            </div>
-            <div class="products_card">
-                <div class="products_name">
-                    <p>Abacaxi Perola</p>
-                </div>
-                <div class="products_preview">
-                    <img src="images/abacaxi_perola.png">
-                </div>
-                <div class="products_infos">
-                    <p>34 UN</p>
-                </div>
-            </div>
-            <div class="products_card">
-                <div class="products_name">
-                    <p>Hortelã</p>
-                </div>
-                <div class="products_preview">
-                    <img src="images/hortela.png">
-                </div>
-                <div class="products_infos">
-                    <p>44 UN</p>
-                </div>
-            </div>
-            <div class="products_card">
-                <div class="products_name">
-                    <p>Pepino Japonês</p>
-                </div>
-                <div class="products_preview">
-                    <img src="images/pepino_japones.png">
-                </div>
-                <div class="products_infos">
-                    <p>27.1 KG</p>
-                </div>
-            </div>
+            <?php endforeach ?>
         </div>
     </main>
     
