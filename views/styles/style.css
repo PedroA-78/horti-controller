@@ -36,6 +36,7 @@ header {
 
 .header_logo {
     flex-grow: 1;
+    font-family: 'Poppins';
 }
 
 .header_logo a {
@@ -92,7 +93,8 @@ main {
     overflow: auto;
 }
 
-.page_products {
+.page_products,
+.page_home {
     background-color: #f1f1f1;
 }
 
@@ -514,6 +516,7 @@ main {
 .logo {
     text-align: center;
     color: white;
+    cursor: default;
 }
 
 .logo span {
@@ -546,7 +549,8 @@ main {
     letter-spacing: 1px;
 }
 
-.register form input {
+.register form input,
+.user_sector select {
     width: 100%;
     margin: 8px 0;
     padding: 14px 44px 14px 16px;
@@ -554,6 +558,7 @@ main {
     border-radius: 24px;
     color: white;
     font-size: 16px;
+    letter-spacing: 1px;
     outline: none;
     background: transparent;
 }
@@ -566,7 +571,8 @@ main {
 
 .user_name,
 .user_email,
-.user_password {
+.user_password,
+.user_sector {
     position: relative;
     display: flex;
     align-items: center;
@@ -574,7 +580,8 @@ main {
 
 .user_name span,
 .user_email span,
-.user_password span {
+.user_password span,
+.user_sector span {
     position: absolute;
     right: 14px;
     top: 50%;
@@ -599,8 +606,20 @@ main {
     transition: ease-in-out 300ms;
 }
 
+.user_sector select {
+    -webkit-appearance: none;
+    cursor: pointer;
+}
+
+.user_sector option {
+    color: black;
+    font-size: 16px;
+    letter-spacing: 1.5px;
+}
+
 .register form button:hover {
     transform: scale(.985);
+    background-color: rgba(255, 255, 255, .3);
 }
 
 .question {

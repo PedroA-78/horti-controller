@@ -18,17 +18,17 @@
 
             <form action="/products/add" method="POST" enctype="multipart/form-data">
                 <div class="product_add_name">
-                    <label for="">Product Name</label>
+                    <label>Product Name</label>
                     <input type="text" name="product_name" placeholder="Enter product name" required>
                 </div>
 
                 <div class="product_add_code">
-                    <label for="">Code</label>
+                    <label>Code</label>
                     <input type="text" name="product_code" placeholder="Enter product code">
                 </div>
 
                 <div class="product_add_category">
-                    <label for="">Category</label>
+                    <label>Category</label>
                     <select name="product_category" required>
                         <option value="Legumes" selected>Legumes</option>
                         <option value="Verduras">Verduras</option>
@@ -39,7 +39,7 @@
                 </div>
 
                 <div class="product_add_unit">
-                    <label for="">Unit</label>
+                    <label>Unit</label>
                     <select name="product_unit" required>
                         <option value="KG" selected>KG</option>
                         <option value="UN">UN</option>
@@ -47,7 +47,7 @@
                 </div>
 
                 <div class="product_add_preview">
-                    <label for="">Product Image</label>
+                    <label>Product Image</label>
                     <input type="file" name="product_preview" id="product_preview" accept=".png, .jpeg, .jpg, .svg">
                     <div class="product_add_preview_custom" onclick="product_preview.click()">
                         <span class="material-symbols-outlined">cloud_upload</span>

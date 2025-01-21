@@ -4,7 +4,7 @@
         '/count' => 'controllers/inventory_count_controller.php',
         '/products' => 'controllers/inventory_list_controller.php',
         '/products/add' => 'controllers/inventory_add_controller.php',
-        '/register' => 'views/user_register.php',
+        '/register' => 'controllers/user_register_controller.php',
         '/login' => 'views/user_login.php'
     ];
 

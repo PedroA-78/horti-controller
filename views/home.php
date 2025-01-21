@@ -10,7 +10,7 @@
 <body>
     <?php include_once 'includes/header.php' ?>
 
-    <main></main>
+    <main class="page_home"></main>
 
     <?php include_once 'includes/footer.php' ?>
 </body>
