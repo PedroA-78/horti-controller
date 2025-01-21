@@ -3,7 +3,9 @@
         '/home' => 'views/home.php',
         '/count' => 'controllers/inventory_count_controller.php',
         '/products' => 'controllers/inventory_list_controller.php',
-        '/products/add' => 'controllers/inventory_add_controller.php'
+        '/products/add' => 'controllers/inventory_add_controller.php',
+        '/register' => 'views/user_register.php',
+        '/login' => 'views/user_login.php'
     ];
 
     $path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);

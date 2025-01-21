@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap");
 
 :root {
 
@@ -7,7 +8,6 @@
 html, body {
     margin: 0;
     padding: 0;
-    border: none;
 }
 
 body {
@@ -488,6 +488,130 @@ main {
 
 .product_save button:hover {
     transform: scale(.975);
+}
+
+/* REGISTER PAGE */
+
+
+.page_register {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: url('peak_background.svg') no-repeat;
+    background-size: cover;
+    background-position: center center;
+}
+
+.register_container {
+    width: 900px;
+    display: grid;
+    grid-template-columns: 1fr 400px;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.logo {
+    text-align: center;
+    color: white;
+}
+
+.logo span {
+    font-size: 160px;
+    font-weight: 400;
+}
+
+.logo h2 {
+    margin: 0;
+    letter-spacing: 2px;
+    font-weight: 500;
+    font-size: 40px;
+    font-family: 'Poppins', 'Roboto', sans-serif;
+}
+
+.register {
+    padding: 16px 32px;
+    border: 2px solid rgba(255, 255, 255, .9);
+    border-radius: 16px;
+    backdrop-filter: blur(8px);
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, .9);
+}
+
+.register h2 {
+    margin: 16px 0;
+    text-align: center;
+    color: white;
+    font-size: 32px;
+    font-family: 'Poppins', 'Roboto', sans-serif;
+    letter-spacing: 1px;
+}
+
+.register form input {
+    width: 100%;
+    margin: 8px 0;
+    padding: 14px 44px 14px 16px;
+    border: 2px solid rgba(255, 255, 255, .8);
+    border-radius: 24px;
+    color: white;
+    font-size: 16px;
+    outline: none;
+    background: transparent;
+}
+
+.register form input::placeholder {
+    color: white;
+    font-size: 16px;
+    letter-spacing: .5px;
+}
+
+.user_name,
+.user_email,
+.user_password {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.user_name span,
+.user_email span,
+.user_password span {
+    position: absolute;
+    right: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: white;
+}
+
+.register form button {
+    display: block;
+    width: 75%;
+    margin: 16px auto 0;
+    padding: 14px;
+    border: 2px solid rgba(255, 255, 255, .8);
+    border-radius: 32px;
+    text-transform: uppercase;
+    color: white;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    background: transparent;
+    cursor: pointer;
+    transition: ease-in-out 300ms;
+}
+
+.register form button:hover {
+    transform: scale(.985);
+}
+
+.question {
+    text-align: center;
+    color: white;
+}
+
+.question a {
+    text-decoration: none;
+    color: white;
+    font-weight: 600;
 }
 
 /* FOOTER */
