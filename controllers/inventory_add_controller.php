@@ -1,6 +1,9 @@
 <?php
-    include_once 'controllers/inventory_controller.php';
-    include_once 'controllers/preview_controller.php';
+    include_once 'includes/connect.php';
+    $db = new Database('model/database/matriz.db');
+
+    include_once 'includes/preview.php';
+    $preview = new Preview;
 
     $method = $_SERVER['REQUEST_METHOD'];
 
@@ -9,15 +12,15 @@
             require_once 'views/inventory_add.php';
             break;
         case 'POST':
-            $preview = _upload($_FILES['product_preview']);
+            $prev = $preview -> upload($_FILES['product_preview']);
 
-            _post('products', [
+            $db -> create('products', [
                 'name' => $_POST['product_name'],
                 'code' => $_POST['product_code'],
                 'amount' => 0,
                 'unit' => $_POST['product_unit'],
                 'category' => $_POST['product_category'],
-                'preview' => $preview
+                'preview' => $prev
             ]);
 
             header('Location: /products/add');

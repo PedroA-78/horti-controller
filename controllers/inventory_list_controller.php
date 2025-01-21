@@ -1,6 +1,9 @@
 <?php 
-    include_once 'controllers/inventory_controller.php';
-    include_once 'controllers/preview_controller.php';
+    include_once 'includes/connect.php';
+    $db = new Database("model/database/matriz.db");
+
+    include_once 'includes/preview.php';
+    $preview = new Preview;
 
     $method = $_SERVER['REQUEST_METHOD'];
     $product = isset($product_id) ? $product_id : null;
@@ -9,8 +12,9 @@
     switch ($method) {
         case 'GET':
             $directory = 'model/previews/';
+
             if ($product) {
-                $result = _get('products', $product);
+                $result = $db -> read('products', ['id' => $product])[0];
 
                 if ($route == "UPDATE") {
                     require_once 'views/inventory_update.php';
@@ -21,7 +25,7 @@
                 return;
             }
 
-            $results = _get('products', null);
+            $results = $db -> read('products', []);
             require_once 'views/inventory_list.php';
 
             break;
@@ -29,20 +33,19 @@
             $method = $_POST['_method'];
 
             if ($method == 'PUT') {
-                $preview = _replace($_FILES['product_preview'], $_POST['_product']);
+                $prev = $preview -> replace($_FILES['product_preview'], $_POST['_product']);
 
-                _put("products",[
-                    'id' => $_POST['_product'],
+                $db -> update('products', [
                     'name' => $_POST['product_name'],
                     'code' => $_POST['product_code'],
                     'unit' => $_POST['product_unit'],
                     'category' => $_POST['product_category'],
-                    'preview' => $preview
-                ]);
+                    'preview' => $prev
+                ], ['id' => $_POST['_product']]);
             } elseif ($method == 'DELETE') {
-                _remove($_POST['_product']);
+                $preview -> remove($_POST['_product']);
 
-                _delete("products", $_POST['_product']);
+                $db -> delete('products', ['id' => $_POST['_product']]);
             }
 
             header('Location: /products');

@@ -1,5 +1,6 @@
 <?php 
-    include_once "controllers/inventory_controller.php";
+    include_once 'includes/connect.php';
+    $db = new Database('model/database/matriz.db');
 
     $method = $_SERVER['REQUEST_METHOD'];
     $product = isset($product_id) ? $product_id : null;
@@ -9,19 +10,17 @@
             $directory = 'model/previews/';
 
             if ($product) {
-                $result = _get("products", $product);
+                $result = $db -> read('products', ['id' => $product])[0];
                 require_once "views/inventory_product.php";
                 return;
             }
 
-            $results = _get("products", null);
+            $results = $db -> read('products', []);
+
             require_once "views/inventory_count.php";
             break;
         case 'POST':
-            _put("products", [
-                'id' => $_POST["_product_id"],
-                'amount' => $_POST["_product_amount"]
-            ]);
+            $db -> update('products', ['amount' => $_POST["_product_amount"]], ['id' => $_POST['_product_id']]);
 
             header("Location: /count");
             break;
