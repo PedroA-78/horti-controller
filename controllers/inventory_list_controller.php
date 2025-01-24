@@ -1,8 +1,11 @@
 <?php 
-    include_once 'includes/connect.php';
+    include_once 'model/classes/auth.php';
+    Auth::handle_login();
+    
+    include_once 'model/classes/connect.php';
     $db = new Database("model/database/matriz.db");
 
-    include_once 'includes/preview.php';
+    include_once 'model/classes/preview.php';
     $preview = new Preview;
 
     $method = $_SERVER['REQUEST_METHOD'];
@@ -25,7 +28,7 @@
                 return;
             }
 
-            $results = $db -> read('products', []);
+            $results = $db -> read('products', ['sector' => $_SESSION['user_sector']]);
             require_once 'views/inventory_list.php';
 
             break;

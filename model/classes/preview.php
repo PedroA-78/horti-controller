@@ -1,5 +1,5 @@
 <?php 
-    include_once 'includes/connect.php';
+    include_once 'model/classes/connect.php';
     $db = new Database('model/database/matriz.db');
 
     $directory = 'model/previews/';

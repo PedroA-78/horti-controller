@@ -1,8 +1,11 @@
 <?php
-    include_once 'includes/connect.php';
+    include_once 'model/classes/auth.php';
+    Auth::handle_login();
+
+    include_once 'model/classes/connect.php';
     $db = new Database('model/database/matriz.db');
 
-    include_once 'includes/preview.php';
+    include_once 'model/classes/preview.php';
     $preview = new Preview;
 
     $method = $_SERVER['REQUEST_METHOD'];
@@ -20,7 +23,8 @@
                 'amount' => 0,
                 'unit' => $_POST['product_unit'],
                 'category' => $_POST['product_category'],
-                'preview' => $prev
+                'preview' => $prev,
+                'sector' => $_SESSION['user_sector']
             ]);
 
             header('Location: /products/add');
