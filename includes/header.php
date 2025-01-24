@@ -10,5 +10,6 @@
         <a href="/products">Inventory List</a>
         <a href="/count">Inventory Count</a>
         <a href="/products/add">Add Product</a>
+        <a href="/logout">Logout</a>
     </div>
 </header>

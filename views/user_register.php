@@ -37,9 +37,10 @@
                     <div class="user_sector">
                         <select name="user_sector">
                             <option value="1">Açougue</option>
-                            <option value="2">Hortífruti</option>
-                            <option value="3" selected>Mercearia</option>
-                            <option value="4">Padaria</option>
+                            <option value="2">Frios</option>
+                            <option value="3">Hortífruti</option>
+                            <option value="4" selected>Mercearia</option>
+                            <option value="5">Padaria</option>
                         </select>
                         <span class="material-icons">center_focus_strong</span>
                     </div>

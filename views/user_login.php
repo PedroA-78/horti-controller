@@ -17,18 +17,18 @@
             </div>
             <div class="register">
                 <h2>Login</h2>
-                <form action="">
+                <form action="/login" method="POST">
                     <div class="user_email">
-                        <input type="email" name="" id="" placeholder="Email">
+                        <input type="email" name="user_email" placeholder="Email">
                         <span class="material-icons">email</span>
                     </div>
                     
                     <div class="user_password">
-                        <input type="text" placeholder="Password">
+                        <input type="text" name="user_password" placeholder="Password">
                         <span class="material-icons">lock</span>
                     </div>
 
-                    <button type="button">Login</button>
+                    <button type="submit">Login</button>
                 </form>
 
                 <div class="question">
