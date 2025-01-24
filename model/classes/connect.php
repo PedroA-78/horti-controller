@@ -41,6 +41,16 @@
             $stmt = $this -> pdo -> prepare($sql);
             $stmt -> execute($conditions);
 
+            return $stmt -> fetchAll();
+        }
+
+        public function search($table, $search) {
+            $sql = "SELECT * FROM $table WHERE name LIKE :search OR code LIKE :search OR category LIKE :search";
+
+            $stmt = $this -> pdo -> prepare($sql);
+            $stmt -> bindValue(':search', "%$search%");
+            $stmt -> execute();
+
             return $stmt -> fetchAll(PDO::FETCH_ASSOC);
         }
 

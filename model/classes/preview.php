@@ -53,7 +53,7 @@
                 return $this -> upload($preview);
             }
     
-            return $this -> preview($id);
+            return $this -> preview($id)['preview'];
         }
 
         public function remove($id) {
