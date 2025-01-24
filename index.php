@@ -5,7 +5,7 @@
         '/products' => 'controllers/inventory_list_controller.php',
         '/products/add' => 'controllers/inventory_add_controller.php',
         '/register' => 'controllers/user_register_controller.php',
-        '/login' => 'views/user_login.php'
+        '/login' => 'controllers/user_login_controller.php'
     ];
 
     $path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
@@ -33,6 +33,11 @@
         case $count === 1:
             $product_id = $count_item[1];
             require 'controllers/inventory_count_controller.php';
+            break;
+        case '/logout':
+            session_start();
+            session_destroy();
+            header('Location: /login');
             break;
         default:
             echo "Página não encontrada!";
