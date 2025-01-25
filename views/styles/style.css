@@ -39,7 +39,7 @@ header {
     font-family: 'Poppins';
 }
 
-.header_logo a {
+.header_logo a:first-child {
     display: flex;
     align-items: center;
     width: min-content;
@@ -53,6 +53,10 @@ header {
 .header_logo a span {
     margin: 0 6px 0 0;
     font-size: 28px;
+}
+
+.hambuger_menu {
+    display: none;
 }
 
 /* HEADER > PAGES */
@@ -123,6 +127,10 @@ main {
     box-sizing: border-box;
     cursor: default;
     transition: ease-in-out 300ms;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .products_card:hover {
@@ -130,11 +138,12 @@ main {
 }
 
 .products_name p {
-    margin: 14px 0;
+    margin: 12px 0;
     text-align: center;
     color: #111;
     font-size: 20px;
     letter-spacing: .5px;
+    text-transform: capitalize;
 }
 
 .products_preview img {
@@ -148,7 +157,7 @@ main {
     margin: 6px 0 0;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-evenly;
     gap: 16px;
 }
 
@@ -350,6 +359,7 @@ main {
 
 .page_count_item {
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
 }
@@ -359,6 +369,7 @@ main {
 .product_box {
     width: 80%;
     height: 720px;
+    margin: 0 auto;
     max-width: 480px;
     padding: 16px;
     border-radius: 16px;
@@ -377,6 +388,7 @@ main {
 }
 
 .product_name h2 {
+    text-transform: capitalize;
     font-size: 28px;
     font-weight: 400;
     letter-spacing: 1.5px;
@@ -649,4 +661,146 @@ footer {
 
 footer p {
     margin: 0;
+}
+
+/* RESPONSIVE CSS > MOBILE */
+
+@media only screen and (max-width: 760px) {
+    /* HEADER */
+
+    header {
+        display: block;
+    }
+
+    .header_logo {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .hambuger_menu {
+        display: block;
+        color: black;
+        text-decoration: none;
+    }
+
+    .header_pages {
+        display: block;
+        height: 0;
+        transition: ease-in-out 300ms;
+    }
+
+    .header_pages.active {
+        height: 178px;
+    }
+
+    .header_pages a {
+        opacity: 0;
+        transform: translateY(-20px);
+        animation: displaynone 300ms ease-in-out forwards;
+    }
+
+    .header_pages.active a {
+        display: block;
+        width: 80%;
+        margin: 10px auto;
+        padding: 8px;
+        border: 1px solid #333;
+        border-radius: 32px;
+        text-align: center;
+        box-shadow: 0 0 4px 0 #333;
+        animation: fadein 300ms ease-in-out forwards;
+    }
+
+    @keyframes fadein {
+        from {
+            opacity: 0;
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @keyframes displaynone {
+        from {
+            display: block;
+        }
+
+        to {
+            display: none;
+        }
+    }
+
+    .header_pages a:last-child {
+        border-color: salmon;
+        box-shadow: 0 0 4px 0 salmon;
+        color: salmon;
+        letter-spacing: 1px;
+        font-weight: 600;
+    }
+
+    /* MAIN */
+
+    main {
+        overflow: unset;
+        padding: 16px 0;
+    }
+
+    .page_add {
+        align-items: unset;
+    }
+
+    .page_count_item {
+        align-items: unset;
+    }
+
+    /* PRODUCTS > UPDATE, DELETE and ADD */
+
+    .product_add_box {
+        width: 90%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .product_add_box form {
+        height: unset;
+        flex-grow: 1;
+        justify-content: space-between;
+    }
+
+    .products_cards {
+        display: block;
+    }
+
+    .products_card {
+        margin: 16px auto;
+        max-width: unset;
+    }
+
+    /* COUNT */ 
+
+    .product_box {
+        width: 90%;
+        flex-grow: 1;
+    }
+
+    /* PAGE LOGIN AND REGISTER */ 
+
+    .page_register {
+        display: unset;
+    }
+
+    .register_container {
+        width: 90%;
+        height: 100%;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+    }
+
+    .register {
+        width: 85%;
+    }
 }
