@@ -98,7 +98,7 @@ main {
 }
 
 .page_products,
-.page_home {
+.page_dashboard {
     background-color: #f1f1f1;
 }
 
@@ -257,7 +257,7 @@ main {
     align-items: center;
     justify-content: center;
     width: 100%;
-    height: 200px;
+    min-height: 120px;
     border: 2px dashed #aaa;
     border-radius: 12px;
     background-color: #e7e7e7;
@@ -368,7 +368,7 @@ main {
 
 .product_box {
     width: 80%;
-    height: 720px;
+    /* height: 720px; */
     margin: 0 auto;
     max-width: 480px;
     padding: 16px;
@@ -650,6 +650,140 @@ main {
     font-weight: 600;
 }
 
+/* DASHBOARD */
+
+.user_welcome {
+    width: 80%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.dashboard_actions {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.dashboard_actions button {
+    padding: 32px 24px;
+    border-radius: 8px;
+    font-size: 17px;
+    font-weight: 600;
+    text-transform: capitalize;
+    letter-spacing: 1px;
+    color: #222;
+    /* box-shadow: 0 0 6px 0 #333; */
+    background-color: #fff;
+    cursor: pointer;
+    transition: ease-in-out 300ms;
+}
+
+.dashboard_actions button:hover {
+    transform: scale(.985);
+}
+
+/* DASHBOARD > NEW COUNT */
+
+.dashboard_newcount_modal {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, .8);
+
+    display: none;
+    align-items: center;
+    justify-content: center;
+}
+
+.dashboard_newcount_modal.active {
+    display: flex;
+}
+
+.dashboard_newcount_modal form {
+    max-width: 480px;
+    padding: 16px 24px;
+    border: 1px solid #222;
+    border-radius: 12px;
+    background-color: #eee;
+    color: #222;
+    font-family: 'Poppins';
+    box-sizing: border-box;
+}
+
+.dashboard_newcount_modal form h2 {
+    margin: 16px 0;
+    font-size: 28px;
+    text-align: center;
+    text-transform: capitalize;
+    letter-spacing: 1px;
+}
+
+.dashboard_newcount_icon {
+    margin: 32px;
+    text-align: center;
+}
+
+.dashboard_newcount_icon span {
+    font-size: 64px;
+}
+
+.dashboard_newcount_modal p {
+    text-align: center;
+    font-size: 17px;
+}
+
+.dashboard_newcount_modal p span {
+    font-weight: 500;
+    font-size: 18px;
+    letter-spacing: .5px;
+}
+
+.dashboard_newcount_modal input {
+    display: block;
+    width: 100%;
+    margin: 0 auto;
+    padding: 8px;
+    border: 2px solid #222;
+    border-radius: 8px;
+    background-color: #fff;
+    outline: none;
+    box-sizing: border-box;
+    font-weight: 600;
+}
+
+.dashboard_newcount_modal input:focus {
+    border: 2px solid #1f6feb;
+}
+
+.dashboard_newcount_buttons {
+    margin: 20px 0 0;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.dashboard_newcount_buttons button {
+    padding: 10px 40px;
+    border: none;
+    /* border: 1px solid #222; */
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: .5px;
+    background-color: #fff;
+    cursor: pointer;
+    transition: ease-in-out 300ms;
+}
+
+.dashboard_newcount_buttons button:last-child {
+    background-color: #111;
+    color: white;
+}
+
+.dashboard_newcount_buttons button:hover {
+    transform: scale(.985);
+}
+
 /* FOOTER */
 
 footer {
@@ -666,6 +800,10 @@ footer p {
 /* RESPONSIVE CSS > MOBILE */
 
 @media only screen and (max-width: 760px) {
+    body {
+        height: 100vmax;
+    }
+
     /* HEADER */
 
     header {
@@ -697,6 +835,12 @@ footer p {
         opacity: 0;
         transform: translateY(-20px);
         animation: displaynone 300ms ease-in-out forwards;
+    }
+
+    
+
+    .header_pages a:hover::after {
+        width: 0;
     }
 
     .header_pages.active a {
@@ -803,4 +947,13 @@ footer p {
     .register {
         width: 85%;
     }
+
+    /* DASHBOARD */
+
+    /* DASHBOARD > NEW COUNT */
+
+    .dashboard_newcount_modal form {
+        width: 95%;
+    }
+
 }

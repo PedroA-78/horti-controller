@@ -17,10 +17,11 @@
                 session_start();
                 session_id();
                 $_SESSION['user_id'] = $user['id'];
+                $_SESSION['user_name'] = $user['name'];
                 $_SESSION['user_sector'] = $user['sector'];
                 $_SESSION['user_logged_in'] = true;
 
-                header('Location: /home');
+                header('Location: /dashboard');
             } else {
                 echo "login não realizado!";
             }

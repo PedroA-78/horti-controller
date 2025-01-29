@@ -1,21 +1,23 @@
 <?php 
     $routes = [
-        '/home' => 'views/home.php',
+        '/dashboard' => 'controllers/dashboard_controller.php',
         '/count' => 'controllers/inventory_count_controller.php',
         '/products' => 'controllers/inventory_list_controller.php',
         '/products/add' => 'controllers/inventory_add_controller.php',
         '/register' => 'controllers/user_register_controller.php',
-        '/login' => 'controllers/user_login_controller.php'
+        '/login' => 'controllers/user_login_controller.php',
+        '/search' => 'controllers/inventory_search_controller.php'
     ];
 
     $path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+
     $update = preg_match('#^/products/(\d+)/update$#', $path, $update_item);
     $delete = preg_match('#^/products/(\d+)/delete$#', $path, $delete_item);
     $count = preg_match('#^/count/(\d+)$#', $path, $count_item);
 
     switch ($path) {
         case '/':
-            header('Location: /home');
+            header('Location: /dashboard');
             break;
         case array_key_exists($path, $routes):
             require $routes[$path];

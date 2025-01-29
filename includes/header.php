@@ -1,6 +1,6 @@
 <header>
     <div class="header_logo">
-        <a href="/home">
+        <a href="/dashboard">
             <span class="material-symbols-outlined">package_2</span>
             LightInv
         </a>
