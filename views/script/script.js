@@ -4,7 +4,7 @@ window.addEventListener('load', () => {
     if (cards) {
         cards.forEach((card) => {
             card.addEventListener("click", () => {
-                window.location.href = `count/${card.getAttribute('id')}`
+                window.location.href = `/inventory/count/${card.getAttribute('id')}`
             })
         })
     }

@@ -10,9 +10,9 @@
     </div>
 
     <div class="header_pages">
-        <a href="/products">Inventory List</a>
-        <a href="/count">Inventory Count</a>
-        <a href="/products/add">Add Product</a>
+        <a href="/inventory/list">Inventory List</a>
+        <a href="/inventory/count">Inventory Count</a>
+        <a href="/inventory/add">Add Product</a>
         <a href="/logout">Logout</a>
     </div>
 </header>

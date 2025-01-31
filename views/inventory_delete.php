@@ -16,7 +16,7 @@
                 <h2>Delete Product</h2>
             </div>
 
-            <form action="/products" method="POST" enctype="multipart/form-data">
+            <form action="/inventory/delete" method="POST" enctype="multipart/form-data">
                 <div class="product_add_name">
                     <label for="">Product Name</label>
                     <input type="text" value="<?= $result['name'] ?>" readonly>
@@ -47,7 +47,7 @@
 
                 <div class="product_delete_actions">
                     <button type="submit">Delete Product</button>
-                    <button type="button">Cancel</button>
+                    <a href="/inventory/list">Cancel</a>
                 </div>
             </form>
         </div>

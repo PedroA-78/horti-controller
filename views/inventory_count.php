@@ -19,7 +19,7 @@
                     <p><?= $product['name'] ?></p>
                 </div>
                 <div class="products_preview">
-                    <img src="<?= $directory . $product['preview'] ?>">
+                    <img src="<?= "../" . $directory . $product['preview'] ?>">
                 </div>
                 <div class="products_infos">
                     <p><?= $product['amount'] ?> <?=  $product['unit'] ?></p>

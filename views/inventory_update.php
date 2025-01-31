@@ -16,7 +16,7 @@
                 <h2>Update Product</h2>
             </div>
 
-            <form action="/products" method="POST" enctype="multipart/form-data">
+            <form action="/inventory/update" method="POST" enctype="multipart/form-data">
                 <div class="product_add_name">
                     <label for="">Product Name</label>
                     <input type="text" name="product_name" placeholder="Enter product name" value="<?= $result['name'] ?>" required>
@@ -61,7 +61,7 @@
 
                 <div class="product_add_actions">
                     <button type="submit">Save Product</button>
-                    <button type="button">Cancel</button>
+                    <a href="/inventory/list">Cancel</a>
                 </div>
             </form>
         </div>

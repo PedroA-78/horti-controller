@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Product</title>
-    <link rel="stylesheet" href="../views/styles/style.css">
+    <link rel="stylesheet" href="../../views/styles/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
     <script src="/views/script/script.js"></script>
 </head>
@@ -13,13 +13,13 @@
 
     <main class="page_count_item">
         <div class="product_box">
-            <form action="/count" method="POST">
+            <form action="/inventory/count/<?= $result['id'] ?>" method="POST">
                 <div class="product_name">
                     <h2><?= $result['name'] ?></h2>
                 </div>
 
                 <div class="product_preview">
-                    <img src="<?= "../" . $directory . $result['preview'] ?>">
+                    <img src="<?= "../../" . $directory . $result['preview'] ?>">
                 </div>
 
                 <div class="product_amount">
