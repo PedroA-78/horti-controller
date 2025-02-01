@@ -17,7 +17,7 @@
                 if ($_POST['confirm'] == "nova contagem") {
                     // echo json_encode($_SESSION);
                     $test = $db -> update('products', ['amount' => 0], ['sector' => $_SESSION['user_sector']]);
-                    header('Location: /count');
+                    header('Location: /inventory/count');
                 }
             }
             break;

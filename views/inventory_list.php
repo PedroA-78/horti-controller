@@ -12,16 +12,15 @@
     <?php include_once 'includes/header.php'?>
     <main class="page_products">
         <div class="products_search">
-            <!-- <form action="/products" method="GET"> -->
-            <div class="search_text">
-                <input type="text" placeholder="Search for name or code">
-                <span class="material-symbols-outlined">search</span>
-            </div>
-            <div class="search_category">
+            <form action="/inventory/list" method="GET">
+                <div class="search_text">
+                    <input type="text" name="search" placeholder="Search for name, code or category">
+                    <button type="submit"><span class="material-symbols-outlined">search</span></button>
+                </div>
+                <div class="search_category">
 
-            </div>
-                <!-- <button type="submit">Pesquisar</button> -->
-            <!-- </form> -->
+                </div>
+            </form>
             <div class="search_by">
 
             </div>

@@ -29,7 +29,7 @@
                     require_once 'views/inventory_add.php';
                     break;
                 case 'list':
-                    $results = $this -> db -> read('products', ['sector' => $_SESSION['user_sector']]);
+                    $results = $this -> searchProduct();
                     $directory = $this -> directory;
                     require_once 'views/inventory_list.php';
                     break;
@@ -42,7 +42,7 @@
                         return;
                     }
 
-                    $results = $this -> db -> read('products', ['sector' => $_SESSION['user_sector']]);
+                    $results = $this -> searchProduct();
                     require_once 'views/inventory_count.php';
                     break;
                 case ($action == 'update' OR $action == 'delete'):
@@ -132,6 +132,22 @@
             $result = $this -> db -> read('products', ['id' => $id])[0];
             if ($action == 'update') require_once 'views/inventory_update.php';
             if ($action == 'delete') require_once 'views/inventory_delete.php';
+        }
+
+        private function searchProduct() {
+            $search = $_GET['search'] ?? '';
+            $search = trim($search);
+            $search = htmlspecialchars($search, ENT_QUOTES, 'UTF-8');
+
+            $sector = $_SESSION['user_sector'];
+
+            if (!empty($search)) {
+                return $this -> db -> search('products', $sector, $search);
+            } else {
+                return $this -> db -> read('products', [
+                    'sector' => $sector
+                ]);
+            }
         }
 
     }

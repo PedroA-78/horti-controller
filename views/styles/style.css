@@ -669,14 +669,15 @@ main {
 }
 
 .search_text {
-    width: 40%;
+    width: 60%;
+    margin: 0 auto;
     min-width: 278px;
     position: relative;
 }
 
 .search_text input {
     width: 100%;
-    padding: 10px 44px 10px 12px;
+    padding: 12px 44px 12px 12px;
     border: 1px solid #aaa;
     border-radius: 8px;
     color: #555;
@@ -686,11 +687,13 @@ main {
     box-sizing: border-box;
 }
 
-.search_text span {
+.search_text button {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
     right: 12px;
+    border: none;
+    background-color: transparent;
     color: #555;
 }
 

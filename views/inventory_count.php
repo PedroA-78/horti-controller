@@ -12,6 +12,20 @@
     <?php include_once 'includes/header.php' ?>
 
     <main class="page_count">
+        <div class="products_search">
+            <form action="/inventory/count" method="GET">
+                <div class="search_text">
+                    <input type="text" name="search" placeholder="Search for name, code or category">
+                    <button type="submit"><span class="material-symbols-outlined">search</span></button>
+                </div>
+                <div class="search_category">
+
+                </div>
+            </form>
+            <div class="search_by">
+
+            </div>
+        </div>
         <div class="products_cards">
             <?php foreach ($results as $product): ?>
             <div class="products_card" id="<?= $product['id'] ?>">
