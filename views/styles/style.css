@@ -1003,4 +1003,10 @@ footer p {
         width: 95%;
     }
 
+    /* SEARCH AREA */
+
+    .search_text {
+        width: 100%;
+    }
+
 }
