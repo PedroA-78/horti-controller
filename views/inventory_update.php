@@ -18,28 +18,26 @@
 
             <form action="/inventory/update" method="POST" enctype="multipart/form-data">
                 <div class="product_add_name">
-                    <label for="">Product Name</label>
+                    <label>Product Name</label>
                     <input type="text" name="product_name" placeholder="Enter product name" value="<?= $result['name'] ?>" required>
                 </div>
 
                 <div class="product_add_code">
-                    <label for="">Code</label>
+                    <label>Code</label>
                     <input type="text" name="product_code" placeholder="Enter product code" value="<?= $result['code'] ?>">
                 </div>
 
                 <div class="product_add_category">
-                    <label for="">Category</label>
+                    <label>Category</label>
                     <select name="product_category" required>
-                        <option value="Legumes" <?= $result['category'] == 'Legumes' ? 'selected' : '' ?>>Legumes</option>
-                        <option value="Verduras" <?= $result['category'] == 'Verduras' ? 'selected' : '' ?>>Verduras</option>
-                        <option value="Frutas" <?= $result['category'] == 'Frutas' ? 'selected' : '' ?>>Frutas</option>
-                        <option value="Ovos" <?= $result['category'] == 'Ovos' ? 'selected' : '' ?>>Ovos</option>
-                        <option value="Embalados" <?= $result['category'] == 'Embalados' ? 'selected' : '' ?>>Embalados</option>
+                        <?php foreach ($categories as $category): ?>
+                        <option value="<?= $category['id'] ?>" <?= $result['category'] == $category['id'] ? 'selected' : '' ?>><?= $category['name'] ?></option>
+                        <?php endforeach; ?>
                     </select>
                 </div>
 
                 <div class="product_add_unit">
-                    <label for="">Unit</label>
+                    <label>Unit</label>
                     <select name="product_unit" required>
                         <option value="KG" <?= $result['unit'] == 'KG' ? 'selected' : '' ?>>KG</option>
                         <option value="UN" <?= $result['unit'] == 'UN' ? 'selected' : '' ?>>UN</option>
@@ -47,7 +45,7 @@
                 </div>
 
                 <div class="product_add_preview">
-                    <label for="">Product Image</label>
+                    <label>Product Image</label>
                     <input type="file" name="product_preview" id="product_preview" accept=".png, .jpeg, .jpg, .svg">
                     <div class="product_add_preview_custom" onclick="product_preview.click()">
                         <span class="material-symbols-outlined">cloud_upload</span>
