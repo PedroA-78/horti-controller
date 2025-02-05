@@ -13,7 +13,7 @@
 
     switch ($route) {
         case '':
-            header('Location: /dashboard');
+            header('Location: /dashboard/main');
             break;
         case array_key_exists($route, $paths):
             require $paths[$route];

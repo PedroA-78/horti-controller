@@ -1,25 +1,20 @@
 <?php
-    include_once 'model/classes/auth.php';
-    Auth::handle_login();
-
-    include_once 'model/classes/connect.php';
-    $db = new Database('model/database/matriz.db');
+    include_once "model/classes/dashboard.php";
+    $dashboard = new Dashboard('model/database/matriz.db');
 
     $method = $_SERVER['REQUEST_METHOD'];
 
-    switch ($method) {
-        case 'GET':
-            $user = $_SESSION['user_name'];
-            require_once 'views/dashboard.php';
+    $request = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+    $segments = explode('/', trim($request, '/'));
+
+    $route = $segments[1] ?? '';
+
+    switch ($route) {
+        case ($route == 'main' OR $route == 'categories'):
+            $dashboard -> handleRequest($route);
             break;
-        case 'POST':
-            if ($_POST['action'] == 'newcount') {
-                if ($_POST['confirm'] == "nova contagem") {
-                    // echo json_encode($_SESSION);
-                    $test = $db -> update('products', ['amount' => 0], ['sector' => $_SESSION['user_sector']]);
-                    header('Location: /inventory/count');
-                }
-            }
+        default:
+            echo "Página não encontrada";
             break;
     }
 ?>

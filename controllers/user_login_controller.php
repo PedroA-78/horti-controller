@@ -21,7 +21,7 @@
                 $_SESSION['user_sector'] = $user['sector'];
                 $_SESSION['user_logged_in'] = true;
 
-                header('Location: /dashboard');
+                header('Location: /dashboard/main');
             } else {
                 echo "login não realizado!";
             }
