@@ -15,7 +15,7 @@
         <div class="products_search">
             <form action="/inventory/count" method="GET">
                 <div class="search_text">
-                    <input type="text" name="search" placeholder="Search for name, code or category">
+                    <input type="text" name="search" placeholder="Search name or code">
                     <button type="submit"><span class="material-symbols-outlined">search</span></button>
                 </div>
                 <div class="search_category">

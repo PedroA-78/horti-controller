@@ -130,6 +130,8 @@
         private function editProduct($action, $id) {
             $directory = $this -> directory;
             $result = $this -> db -> read('products', ['id' => $id])[0];
+            $categories = $this -> db -> read('categories', ['sector' => $_SESSION['user_sector']]);
+
             if ($action == 'update') require_once 'views/inventory_update.php';
             if ($action == 'delete') require_once 'views/inventory_delete.php';
         }

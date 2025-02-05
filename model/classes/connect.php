@@ -46,8 +46,7 @@
 
         public function search($table, $sector, $search) {
             $sql = "SELECT * FROM $table WHERE sector = :sector AND (
-                name LIKE :search OR code LIKE :search OR category LIKE :search)";
-            // $sql = "SELECT * FROM $table WHERE name LIKE :search OR code LIKE :search OR category LIKE :search";
+                name LIKE :search OR code LIKE :search)";
 
             $stmt = $this -> pdo -> prepare($sql);
             $stmt -> bindValue(':sector', $sector);
