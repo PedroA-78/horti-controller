@@ -99,7 +99,8 @@ main {
 
 .page_products,
 .page_dashboard,
-.page_categories {
+.page_categories,
+.page_count_item {
     background-color: #f1f1f1;
 }
 
@@ -342,8 +343,7 @@ main {
 
 /* MAIN (INVENTORY COUNT) */
 
-.page_count,
-.page_count_item {
+.page_count {
     background-color: #f1f1f1;
 }
 
@@ -364,37 +364,43 @@ main {
 /* MAIN (INVENTORY COUNT ITEM) */
 
 .page_count_item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    padding: 16px 0;
 }
 
 /* MAIN > COUNT-ITEM */
 
-.product_box {
-    width: 80%;
-    /* height: 720px; */
-    margin: 0 auto;
-    max-width: 480px;
-    padding: 16px;
-    border-radius: 16px;
-    background-color: white;
-    box-shadow: 0 0 10px 0 #777;
-    box-sizing: border-box;
-}
-
-.product_box form {
-    width: 90%;
-    height: 100%;
-    margin: 0 auto;
+.count_item_container {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    align-items: center;
+    justify-content: center;
+
+    width: 96%;
+    height: 100%;
+    margin: 0 auto;
+    border-radius: 16px;
+    box-shadow: 0 0 10px 0 gray;
+    box-sizing: border-box;
+    background-color: white;
+}
+
+.count_item_container form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    width: 60%;
+    max-width: 480px;
+    margin: 0 auto;
+    border: 1px solid #333;
+    border-radius: 6px;
+    padding: 16px;
+    box-sizing: border-box;
 }
 
 .product_name h2 {
     text-transform: capitalize;
+    text-align: center;
     font-size: 28px;
     font-weight: 400;
     letter-spacing: 1.5px;
@@ -402,13 +408,13 @@ main {
 
 .product_preview img {
     display: block;
-    width: 120px;
-    height: 120px;
+    width: 130px;
+    height: 130px;
     margin: 0 auto;
     padding: 12px;
+    border: 1px solid #333;
     border-radius: 8px;
-    box-shadow: 0 0 4px 0 #777;
-    background-color: rgba(0, 0, 0, .05);
+    box-shadow: 0 0 8px 0 #777;
 }
 
 .product_amount {
@@ -497,20 +503,38 @@ main {
 
 .product_save {
     margin: 24px 0 0;
-    text-align: end;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    gap: 8px;
 }
 
+.product_save a,
 .product_save button {
-    border: none;
+    flex-grow: 1;
+    max-width: 120px;
+    display: block;
+    border: 1px solid #aaa;
     border-radius: 12px;
     padding: 12px 16px;
-    color: white;
+    color: #222;
     font-size: 14px;
-    background-color: #111;
+    background-color: white;
+    text-align: center;
+    text-decoration: none;
+    box-sizing: border-box;
     cursor: pointer;
     transition: ease-in-out 300ms;
 }
 
+.product_save button {
+    border: none;
+    color: white;
+    font-size: 14px;
+    background-color: #111;
+}
+
+.product_save a:hover,
 .product_save button:hover {
     transform: scale(.975);
 }
@@ -1135,9 +1159,14 @@ footer p {
 
     /* COUNT */ 
 
-    .product_box {
-        width: 90%;
-        flex-grow: 1;
+    .count_item_container form {
+        width: 96%;
+        border: unset;
+    }
+
+    .product_preview img {
+        width: 120px;
+        height: 120px;
     }
 
     /* PAGE LOGIN AND REGISTER */ 

@@ -12,7 +12,7 @@
     <?php include_once 'includes/header.php' ?>
 
     <main class="page_count_item">
-        <div class="product_box">
+        <div class="count_item_container">
             <form action="/inventory/count/<?= $result['id'] ?>" method="POST">
                 <div class="product_name">
                     <h2><?= $result['name'] ?></h2>
@@ -40,6 +40,7 @@
                 <input type="hidden" class="_product_unit" name="_product_unit" value="<?= $result['unit'] ?>">
 
                 <div class="product_save">
+                    <a href="/inventory/count">Cancel</a>
                     <button type="submit">Save Product</button>
                 </div>
             </form>
