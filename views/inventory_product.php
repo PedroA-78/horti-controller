@@ -6,7 +6,7 @@
     <title>Product</title>
     <link rel="stylesheet" href="../../views/styles/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
-    <script src="/views/script/script.js"></script>
+    <script src="/views/script/count.js"></script>
 </head>
 <body>
     <?php include_once 'includes/header.php' ?>
