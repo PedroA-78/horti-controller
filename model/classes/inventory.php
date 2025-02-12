@@ -2,16 +2,19 @@
     include_once "model/classes/auth.php";
     include_once "model/classes/connect.php";
     include_once "model/classes/preview.php";
+    include_once "model/classes/movements.php";
 
     class Inventory {
         private $db;
         private $preview;
         private $directory = 'model/previews/';
+        private $movement;
 
         public function __construct($databasePath) {
             Auth::handle_login();
             $this -> db = new Database($databasePath);
             $this -> preview = new Preview();
+            $this -> movement = new Movement($databasePath);
         }
 
         public function handleRequest($action, $id = null) {
@@ -38,6 +41,8 @@
 
                     if ($id) {
                         $result = $this -> db -> read('products', ['id' => $id])[0];
+                        $movements = $this -> movement -> getMovements(['sector' => $_SESSION['user_sector'], 'product' => $result['name']]);
+
                         require_once 'views/inventory_product.php';
                         return;
                     }
@@ -70,8 +75,13 @@
                     break;
                 case 'count':
                     $this -> countProduct();
-                    header('Location: /inventory/count');
-                    // header("Location: /inventory/count/$id");
+                    // header('Location: /inventory/count');
+                    header("Location: /inventory/count/$id");
+                    break;
+                case 'newcount':
+                    $this -> startNewCount();
+                    $this -> movement -> handleRequest($action);
+                    header("Location: /inventory/count");
                     break;
             }
         }
@@ -80,7 +90,7 @@
             $prev = $this -> preview -> upload($_FILES['product_preview']);
 
             $this -> db -> create('products', [
-                'name' => $_POST['product_name'],
+                'name' => strtolower($_POST['product_name']),
                 'code' => $_POST['product_code'],
                 'amount' => 0,
                 'unit' => $_POST['product_unit'],
@@ -88,6 +98,8 @@
                 'preview' => $prev,
                 'sector' => $_SESSION['user_sector']
             ]);
+
+            $this -> movement -> handleRequest('add');
 
             return;
         }
@@ -105,6 +117,8 @@
                 'id' => $_POST['_product']
             ]);
 
+            $this -> movement -> handleRequest('update');
+
             return;
         }
 
@@ -114,16 +128,15 @@
                 'id' => $_POST['_product']
             ]);
 
+            $this -> movement -> handleRequest('delete');
+
             return;
         }
 
         private function countProduct() {
-            $this -> db -> update('products', [
-                'amount' => $_POST["_product_amount"]
-            ], [
-                'id' => $_POST['_product_id']
-            ]);
+            $this -> db -> update('products', ['amount' => $_POST["_product_amount"]], ['id' => $_POST['_product_id']]);
 
+            $this -> movement -> handleRequest('count');
             return;
         }
         
@@ -150,6 +163,10 @@
                     'sector' => $sector
                 ]);
             }
+        }
+
+        private function startNewCount() {
+            $this -> db -> update('products', ['amount' => 0], ['sector' => $_SESSION['user_sector']]);
         }
 
     }

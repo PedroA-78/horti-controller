@@ -19,7 +19,7 @@
             <form action="/inventory/delete" method="POST" enctype="multipart/form-data">
                 <div class="product_add_name">
                     <label for="">Product Name</label>
-                    <input type="text" value="<?= $result['name'] ?>" readonly>
+                    <input type="text" value="<?= $result['name'] ?>" name="product_name" readonly>
                 </div>
 
                 <div class="product_add_code">
@@ -34,7 +34,7 @@
 
                 <div class="product_add_unit">
                     <label for="">Unit</label>
-                    <input type="text" value="<?= $result['unit'] ?>" readonly>
+                    <input type="text" value="<?= $result['unit'] ?>" name="product_unit" readonly>
                 </div>
 
                 <div class="product_add_preview">
