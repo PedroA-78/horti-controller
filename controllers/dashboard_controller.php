@@ -10,7 +10,10 @@
     $route = $segments[1] ?? '';
 
     switch ($route) {
-        case ($route == 'main' OR $route == 'categories'):
+        case ($route == 'main' 
+        OR $route == 'categories' 
+        OR $route == 'movements'
+        OR $route == 'newcount' ):
             $dashboard -> handleRequest($route);
             break;
         default:
