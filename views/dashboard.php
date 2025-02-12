@@ -18,10 +18,11 @@
             <div class="dashboard_actions">
                 <button type="button" class="dashboard_newcount">Nova contagem</button>
                 <a href="/dashboard/categories">Categorias</a>
+                <a href="/dashboard/movements">Movimentações</a>
             </div>
             <div class="dashboard_modals">
                 <div class="dashboard_newcount_modal">
-                    <form action="/dashboard/main" method="POST">
+                    <form action="/dashboard/newcount" method="POST">
                         <h2>Nova contagem</h2>
                         
                         <div class="dashboard_newcount_icon">
