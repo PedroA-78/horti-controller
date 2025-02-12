@@ -1,14 +1,4 @@
 <?php 
-    // function connectDB() {
-    //     try {
-    //         $pdo = new PDO("sqlite:model/database/matriz.db");
-    //         $pdo -> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    //         return $pdo;
-    //     } catch (PDOException $e) {
-    //         echo json_encode($e);
-    //     }
-    // }
-
     class Database {
         private $pdo;
 
@@ -73,6 +63,12 @@
             $stmt = $this -> pdo -> prepare($sql);
 
             return $stmt -> execute($conditions);
+        }
+
+        public function deleteAllRegisters($table) {
+            $sql = "DELETE FROM $table; DELETE FROM SQLITE_SEQUENCE WHERE name = '$table'";
+            $stmt = $this -> pdo -> prepare($sql);
+            return $stmt -> execute();
         }
     }
 ?>
