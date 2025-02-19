@@ -2,8 +2,6 @@
     include_once "model/classes/dashboard.php";
     $dashboard = new Dashboard('model/database/matriz.db');
 
-    $method = $_SERVER['REQUEST_METHOD'];
-
     $request = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
     $segments = explode('/', trim($request, '/'));
 
@@ -13,7 +11,8 @@
         case ($route == 'main' 
         OR $route == 'categories' 
         OR $route == 'movements'
-        OR $route == 'newcount' ):
+        OR $route == 'newcount'
+        OR $route == 'backups' ):
             $dashboard -> handleRequest($route);
             break;
         default:
