@@ -1,6 +1,5 @@
 <?php 
     include_once "model/classes/inventory.php";
-
     $inventory = new Inventory('model/database/matriz.db');
 
     $request = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);

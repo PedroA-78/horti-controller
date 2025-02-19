@@ -4,17 +4,20 @@
     include_once "model/classes/inventory.php";
     include_once "model/classes/categories.php";
     include_once "model/classes/movements.php";
+    include_once "model/classes/backups.php";
 
     class Dashboard {
         private $inventory;
         private $category;
         private $movement;
+        private $backup;
 
         public function __construct($databasePath) {
             Auth::handle_login();
             $this -> inventory = new Inventory($databasePath);
             $this -> category = new Category($databasePath);
             $this -> movement = new Movement($databasePath);
+            $this -> backup = new Backup($databasePath);
         }
 
         public function handleRequest($page) {
@@ -36,6 +39,9 @@
                 case 'movements':
                     $this -> movement -> handleRequest();
                     break;
+                case 'backups':
+                    $this -> backup -> handleRequest();
+                    break;
             }
         }
 
@@ -49,6 +55,9 @@
                         $this -> inventory -> handleRequest($page);
                     }
                     return;
+                    break;
+                case 'backups':
+                    $this -> backup -> handleRequest($_POST['action']);
                     break;
             }
         }

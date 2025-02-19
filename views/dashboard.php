@@ -19,6 +19,7 @@
                 <button type="button" class="dashboard_newcount">Nova contagem</button>
                 <a href="/dashboard/categories">Categorias</a>
                 <a href="/dashboard/movements">Movimentações</a>
+                <a href="/dashboard/backups">Backups</a>
             </div>
             <div class="dashboard_modals">
                 <div class="dashboard_newcount_modal">

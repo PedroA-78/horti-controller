@@ -3,18 +3,21 @@
     include_once "model/classes/connect.php";
     include_once "model/classes/preview.php";
     include_once "model/classes/movements.php";
+    include_once "model/classes/backups.php";
 
     class Inventory {
         private $db;
         private $preview;
         private $directory = 'model/previews/';
         private $movement;
+        private $backup;
 
         public function __construct($databasePath) {
             Auth::handle_login();
             $this -> db = new Database($databasePath);
             $this -> preview = new Preview();
             $this -> movement = new Movement($databasePath);
+            $this -> backup = new Backup($databasePath);
         }
 
         public function handleRequest($action, $id = null) {
@@ -29,6 +32,7 @@
 
             switch ($action) {
                 case 'add':
+                    $categories = $this -> db -> read('categories', ['sector' => $_SESSION['user_sector']]);
                     require_once 'views/inventory_add.php';
                     break;
                 case 'list':
@@ -79,6 +83,7 @@
                     header("Location: /inventory/count/$id");
                     break;
                 case 'newcount':
+                    $this -> backup -> handleRequest($action);
                     $this -> startNewCount();
                     $this -> movement -> handleRequest($action);
                     header("Location: /inventory/count");
