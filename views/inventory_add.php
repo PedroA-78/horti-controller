@@ -30,11 +30,9 @@
                 <div class="product_add_category">
                     <label>Category</label>
                     <select name="product_category" required>
-                        <option value="Legumes" selected>Legumes</option>
-                        <option value="Verduras">Verduras</option>
-                        <option value="Frutas">Frutas</option>
-                        <option value="Ovos">Ovos</option>
-                        <option value="Embalados">Embalados</option>
+                        <?php foreach($categories as $category): ?>
+                        <option value="<?= $category['id'] ?>"><?= $category['name'] ?></option>
+                        <?php endforeach; ?>
                     </select>
                 </div>
 
