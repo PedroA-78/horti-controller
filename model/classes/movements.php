@@ -58,15 +58,17 @@
 
         }
 
-        public function getMovements($conditions) {
-            $movements = $this -> db -> read('movements', $conditions);
-
+        public function getMovements($conditions, $insertIcon = true) {
+            $sql = "SELECT * FROM movements WHERE ";
+            $sql .= implode(" AND ", array_map(fn($condition) => "$condition = :$condition", array_keys($conditions)));
+            $sql .= " ORDER BY id DESC";
+            $movements = $this -> db -> customRead($sql, $conditions);
+            
             for ($i = 0; $i < count($movements); $i++) {
                 $user = $this -> db -> read('users', ['id' => $movements[$i]['user']])[0];
                 $movements[$i]['user'] = $user['email'];
-                $movements[$i]['type'] = $this -> setIconType($movements[$i]['type']);
+                $movements[$i]['type'] = $insertIcon ? $this -> setIconType($movements[$i]['type']) : $movements[$i]['type'];
             }
-
             return $movements;
         }
 
