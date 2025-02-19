@@ -31,7 +31,7 @@
             $stmt = $this -> pdo -> prepare($sql);
             $stmt -> execute($conditions);
 
-            return $stmt -> fetchAll();
+            return $stmt -> fetchAll(PDO::FETCH_ASSOC);
         }
 
         public function search($table, $sector, $search) {
@@ -69,6 +69,13 @@
             $sql = "DELETE FROM $table; DELETE FROM SQLITE_SEQUENCE WHERE name = '$table'";
             $stmt = $this -> pdo -> prepare($sql);
             return $stmt -> execute();
+        }
+
+        public function customRead($sql, $data) {
+            $stmt = $this -> pdo -> prepare($sql);
+            $stmt -> execute($data);
+
+            return $stmt -> fetchAll(PDO::FETCH_ASSOC);
         }
     }
 ?>
