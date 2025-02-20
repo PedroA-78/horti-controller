@@ -23,7 +23,8 @@
 
                 header('Location: /dashboard/main');
             } else {
-                echo "login não realizado!";
+                $notify = true;
+                require_once 'views/user_login.php';
             }
             break;
     }

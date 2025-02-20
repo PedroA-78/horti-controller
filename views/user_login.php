@@ -10,6 +10,7 @@
 </head>
 <body>
     <main class="page_register">
+        <?= $notify ? '<div class="notify"><span class="material-icons">close</span><p>Dados Incorretos!</p></div>' : '' ?>
         <div class="register_container">
             <div class="logo">
                 <span class="material-symbols-outlined">package_2</span>
