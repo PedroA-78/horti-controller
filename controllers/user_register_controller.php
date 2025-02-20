@@ -12,12 +12,22 @@
             $email = filter_input(INPUT_POST, 'user_email', FILTER_VALIDATE_EMAIL);
             $password = password_hash($_POST['user_password'], PASSWORD_DEFAULT);
 
-            $db -> create('users', [
-                'name' => $_POST['user_name'],
-                'email' => $email,
-                'password' => $password,
-                'sector' => $_POST['user_sector']
-            ]);
+            try {
+                $db -> create('users', [
+                    'name' => $_POST['user_name'],
+                    'email' => $email,
+                    'password' => $password,
+                    'sector' => $_POST['user_sector']
+                ]);
+            } catch (\Throwable $e) {
+                $notify = [
+                    'color' => 'blue',
+                    'icon' => 'priority_high',
+                    'message' => 'Usuário já cadastrado!'
+                ];
+                
+                require_once 'views/user_login.php';
+            }
 
             header('Location: /login');
             break;

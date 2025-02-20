@@ -23,7 +23,10 @@
 
                 header('Location: /dashboard/main');
             } else {
-                $notify = true;
+                $notify = [
+                    'icon' => 'close',
+                    'message' => 'Dados Incorretos!'
+                ];
                 require_once 'views/user_login.php';
             }
             break;

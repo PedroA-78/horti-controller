@@ -697,6 +697,15 @@ main {
     color: salmon;
 }
 
+.notify.blue {
+    border: 1px solid dodgerblue;
+}
+
+.notify.blue span {
+    border: 1px solid dodgerblue;
+    color: dodgerblue;
+}
+
 .register_container {
     width: 900px;
     display: grid;
