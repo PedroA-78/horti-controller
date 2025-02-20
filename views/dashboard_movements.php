@@ -13,8 +13,8 @@
     <main class="page_movements">
         <div class="movements_container">
             <h2>Movimentações <?= $sector ?>!</h2>
-            <div class=""></div>
             <div class="movements">
+                <?= !$movements ? '<div class="no_movements"><p>Ainda não existem movimentações no setor!</p></div>' : ''; ?>
                 <?php foreach($movements as $movement): ?>
                 <div class="movement">
                     <div class="movement_symbol">

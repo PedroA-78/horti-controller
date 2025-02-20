@@ -39,12 +39,14 @@
                     break;
                 case 'count':
                     $movements = json_decode($_POST['_product_movements'], true);
+                    $product = $this -> db -> read('products', ['id' => $_POST['_product_id']], 'name')[0]['name'];
+
                     foreach ($movements as $movement) {
                         $this -> db -> create('movements', [
-                            'product' => $this -> db -> read('products', ['id' => $_POST['_product_id']], 'name')[0]['name'],
+                            'product' => $product,
                             'amount' => $movement['amount'],
                             'unit' => $_POST['_product_unit'],
-                            'user' => $_SESSION['user_id'],
+                            'user' => $this -> db -> read('users', ['id' => $_SESSION['user_id']])[0]['email'],
                             'date_time' => $movement['datetime'],
                             'type' => $movement['type'],
                             'sector' => $_SESSION['user_sector']
@@ -63,12 +65,11 @@
             $sql .= implode(" AND ", array_map(fn($condition) => "$condition = :$condition", array_keys($conditions)));
             $sql .= " ORDER BY id DESC";
             $movements = $this -> db -> customRead($sql, $conditions);
-            
+
             for ($i = 0; $i < count($movements); $i++) {
-                $user = $this -> db -> read('users', ['id' => $movements[$i]['user']])[0];
-                $movements[$i]['user'] = $user['email'];
                 $movements[$i]['type'] = $insertIcon ? $this -> setIconType($movements[$i]['type']) : $movements[$i]['type'];
             }
+
             return $movements;
         }
 
