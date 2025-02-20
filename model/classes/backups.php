@@ -32,10 +32,8 @@
             $backups = [];
 
             foreach ($this -> backupList() as $backup) {
-                $json = json_decode(file_get_contents($this -> directory . $backup), true);
+                $json = json_decode(file_get_contents($this -> getDirectory() . $backup), true);
                 $date = $this -> setDate(null, $json['date']);
-
-                // echo json_encode() . "<br>";
 
                 array_push($backups, [
                     'id' => $json['id'],
@@ -56,6 +54,9 @@
                 case 'restore':
                     $this -> restoreBackup();
                     header('Location: /inventory/count');
+                    break;
+                case 'export':
+                    // $this -> exportBackup();
                     break;
             }
         }
@@ -78,20 +79,18 @@
 
             $json = json_encode($backup, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
 
-            if (!is_dir($this -> directory)) {
-                mkdir($this -> directory, 0775, true);
+            if (!is_dir($this -> getDirectory())) {
+                mkdir($this -> getDirectory(), 0775, true);
             }
 
-            file_put_contents($this -> directory . $backup['id'] . '.json', $json);
+            file_put_contents($this -> getDirectory() . $backup['id'] . '.json', $json);
 
             return;
         }
 
         private function restoreBackup() {
-            $backupFile = file_get_contents($this -> directory . $_POST['backup'] . '.json');
+            $backupFile = file_get_contents($this -> getDirectory() . $_POST['backup'] . '.json');
             $backupData = json_decode($backupFile, true);
-
-            // echo json_encode($backupData, JSON_UNESCAPED_UNICODE);
 
             if (!empty($backupData['count'])) {
                 $this -> db -> update('products', ['amount' => 0], ['sector' => $_SESSION['user_sector']]);
@@ -118,6 +117,7 @@
             }
         }
 
+
         private function setDate($format = null, $date = 'now') {
             $date = new DateTimeImmutable($date, new DateTimeZone('America/Sao_Paulo'));
 
@@ -129,16 +129,26 @@
         }
 
         private function backupList() {
-            $files = scandir($this -> directory);
-            $backups = [];
+            $files = scandir($this -> getDirectory());
+            
+            if (!empty($files)) {
+                $backups = [];
 
-            foreach ($files as $file) {
-                if ($file !== '.' AND $file !== '..') {
-                    array_push($backups, $file);
+                foreach ($files as $file) {
+                    if ($file !== '.' AND $file !== '..') {
+                        array_push($backups, $file);
+                    }
                 }
+
+                return array_reverse($backups);
             }
 
-            return array_reverse($backups);
+            return;
+        }
+
+        private function getDirectory() {
+            $sector = $this -> db -> read('sectors', ['id' => $_SESSION['user_sector']])[0]['name'];
+            return $this -> directory . strtolower($sector) . '/';
         }
     }
 ?>
