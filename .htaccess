@@ -5,4 +5,9 @@ RewriteRule ^(.*)$ index.php [L]
 
 DirectoryIndex index.php
 
+RewriteCond %{HTTPS} off [OR]
+RewriteCond %{HTTP:X-Forwarded-Proto} !https [OR]
+RewriteCond %{HTTP:CF-Visitor} !{"scheme":"https"}
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
 AddDefaultCharset UTF-8
