@@ -27,6 +27,7 @@
                 ];
                 
                 require_once 'views/user_login.php';
+                return;
             }
 
             header('Location: /login');
